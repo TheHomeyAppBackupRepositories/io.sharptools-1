@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SharpTools</title>
+
+    
+
+    <!-- The '/homey.js' script must be included in your settings view to work -->
+    <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+    <!-- Setting View API (JS) is documented here: https://apps.developer.homey.app/advanced/custom-views/app-settings -->
+
+    <!-- inject the vite and src files dynamically based on user input-->
+    <script src="https://stiovdt.ngrok.io"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    
+    <div id="script-injector">
+        <input type="text" placeholder="https://vite-url" id="input-base-path" />
+        <button id="button-submit">Submit</button>
+    </div>
+    
+    <!-- <script src="http://127.0.0.1:5173/@vite/client"></script>
+    <script type="module" src="https://127.0.0.1:5173/src/main.js"></script> -->
+    <script>
+        window.onHomeyReady = function(Homey){ console.log('Mark Homey as ready()'); Homey.ready(); }
+
+        let btnSubmit = document.getElementById("button-submit");
+        let txtBasePath = document.getElementById("input-base-path");
+        let divInjector = document.getElementById("script-injector");
+
+        btnSubmit.onclick = () => {
+            let path = txtBasePath.value;
+            console.log('The path is', path)
+            injectScripts(path)
+        }
+
+        let injectScripts = (baseUrl) => {
+            let viteScript = baseUrl + "/@vite/client";
+            let mainScript = baseUrl + "/src/main.js";
+
+            injectScript(viteScript);
+            injectScript(mainScript);
+
+            divInjector.style.display = "none";
+        }
+
+        let injectScript = (scriptUrl, id) => {
+            //otherwise just inject it
+            script = document.createElement("script");
+            script.id = id;
+            script.type = "text/javascript";
+            script.async = true
+            script.type = "module"
+            // script.onload = () => { 
+            //     console.log(`Script ${id} injected`);
+            // }
+            script.src = scriptUrl;
+            
+            document.getElementsByTagName('head')[0].appendChild(script);
+        }
+
+    </script>
+  </body>
+</html>

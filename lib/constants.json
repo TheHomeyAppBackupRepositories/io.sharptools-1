@@ -1,0 +1,27 @@
+{
+    "production": {
+        "CLIENT_ID": "ec007b52-0a12-4664-bce5-8c983a17f940",
+        "STIO_FRONTEND_URL": "https://sharptools.io",
+        "STIO_API_HOST": "api.sharptools.io",
+        "STIO_API_PROTOCOL": "https://",
+        "STIO_WS_PROTOCOL": "wss://",
+        "STIO_LABS_URL": "https://lab.sharptools.dev"
+    },
+    "test": {
+        "//": "IMPORTANT!!! Rename to/from production as needed!!!",
+        "CLIENT_ID": "ec007b52-0a12-4664-bce5-8c983a17f940",
+        "STIO_FRONTEND_URL": "https://beta.sharptools.io",
+        "STIO_API_HOST": "api.sharptools.io",
+        "STIO_API_PROTOCOL": "https://",
+        "STIO_WS_PROTOCOL": "wss://",
+        "STIO_LABS_URL": "https://lab.sharptools.dev"
+    },
+    "development": {
+        "CLIENT_ID": "ec007b52-0a12-4664-bce5-8c983a17f940",
+        "STIO_FRONTEND_URL": "http://localhost:9001",
+        "STIO_API_HOST": "192.168.1.10:3000",
+        "STIO_API_PROTOCOL": "http://",
+        "STIO_WS_PROTOCOL": "ws://",
+        "STIO_LABS_URL": "http://192.168.1.10:9003"
+    }
+}
